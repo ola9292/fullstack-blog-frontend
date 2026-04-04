@@ -1,39 +1,53 @@
-# Blog-frontend
+# Full-Stack Blog Frontend (Vue.js + Pinia)
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern, responsive, and fully decoupled frontend for a blogging platform. Built with **Vue 3 (Composition API)**, managed by **Pinia**, and styled with **Tailwind CSS** and **DaisyUI**.
 
-## Recommended IDE Setup
+🔗 **Backend API Repository:** (https://github.com/ola9292/fullstack-blog-backend)
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+---
 
-## Recommended Browser Setup
+## Features
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+- **Reactive State Management:** Centralized Auth and Blog states using **Pinia**.
+- **Dynamic Routing:** Handled by **Vue Router** with protected navigation guards.
+- **Full CRUD Integration:** Create, read, update, and delete blog posts via API.
+- **Interactive UI:** \* Real-time comment updates (Optimistic UI).
+  - Like/Unlike toggles with SVG state changes.
+  - Custom scrollable comment sections.
+- **Authentication Flow:** Persistent login sessions using `localStorage` and Bearer tokens.
+- **Responsive Design:** Fully mobile-friendly layout powered by **Tailwind CSS**.
 
-## Customize configuration
+## Tech Stack
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- **Core:** Vue.js 3 (Vite)
+- **State:** Pinia
+- **Routing:** Vue Router
+- **Styling:** Tailwind CSS & DaisyUI
+- **HTTP Client:** Axios
 
-## Project Setup
+---
 
-```sh
-npm install
-```
+## Getting Started
 
-### Compile and Hot-Reload for Development
+### Prerequisites
 
-```sh
-npm run dev
-```
+- Node.js (v18+)
+- The Backend API running (see Backend Repo for instructions)
 
-### Compile and Minify for Production
+### Installation
 
-```sh
-npm run build
-```
-# fullstack-blog-frontend
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/ola9292/fullstack-blog-frontend.git](https://github.com/ola9292/fullstack-blog-frontend.git)
+    cd fullstack-blog-frontend
+    ```
+
+## 🔒 Key Logic Highlights
+
+### Decoupled Authentication
+
+The app uses a `useAuthStore` to manage user sessions. Upon login, the Bearer token is stored in `localStorage` and injected into Axios headers for all subsequent authorized requests.
+
+### Optimistic UI Updates
+
+When adding a comment, the frontend waits for a successful API response and then pushes the new comment directly into the local `blog.comments` array, providing an instant update without a full page reload.

@@ -55,7 +55,7 @@ router.beforeEach(async (to, from) => {
     return { name: "home"}
   }
   if(!authStore.user && to.meta.auth){
-    return { name: "home"}
+    return { name: "login"}
   }
 })
 export default router

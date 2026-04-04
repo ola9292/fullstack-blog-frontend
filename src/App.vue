@@ -61,7 +61,7 @@ onMounted(() => {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
         </svg>
       </label>
-      <button class="btn btn-ghost text-xl"> <a href="/">daisyUI</a> <span v-if="authStore.user">welcome {{ authStore.user.name }}</span></button>
+      <button class="btn btn-ghost text-xl"> <a href="/">Ola Blogs</a> <span v-if="authStore.user">(welcome {{ authStore.user.name }})</span></button>
     </div>
 
     <div class="navbar-end hidden lg:flex">
