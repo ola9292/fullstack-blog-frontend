@@ -29,11 +29,11 @@ export const useBlogStore = defineStore('blogStore', {
             this.errors = error.response.data.errors
         }
     },
-    async getBlogs() {
+    async getBlogs(page) {
         try {
             // const token = localStorage.getItem("token");
-            const response = await axios.get('/api/blogs');
-           
+            const response = await axios.get(`/api/blogs?page=${page}`);
+           console.log(response.data)
             return response.data
         } catch (error) {
             console.error(error.response.data);

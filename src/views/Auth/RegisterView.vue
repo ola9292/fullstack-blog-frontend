@@ -32,7 +32,7 @@ onMounted(() => {
                 </div>
                 <label class="floating-label my-4">
                     <span>Your Name</span>
-                    <input type="text" placeholder="mail@site.com" class="input input-primary input-md w-full" v-model="formData.email"/>
+                    <input type="text" placeholder="mail@site.com" class="input input-primary input-md w-full" v-model="formData.name"/>
                     <p class="text-red-500" v-if="authStore.errors.name">{{ authStore.errors.name[0] }}</p>
                 </label>
                 <label class="floating-label my-4">
@@ -47,7 +47,7 @@ onMounted(() => {
                 </label>
                 <label class="floating-label my-4">
                     <span>Password Confirmation</span>
-                    <input type="password" placeholder="*********" class="input input-primary input-md w-full" v-model="formData.password"/>
+                    <input type="password" placeholder="*********" class="input input-primary input-md w-full" v-model="formData.password_confirmation"/>
                     <p class="text-red-500" v-if="authStore.errors?.password_confirmation">{{ authStore.errors.password_confirmation[0] }}</p>
                 </label>
                 <button class="btn btn-active btn-primary w-full">Register</button>

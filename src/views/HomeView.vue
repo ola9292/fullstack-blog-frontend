@@ -6,13 +6,21 @@ const blogStore = useBlogStore()
 
 const blogs = ref([])
 const loading = ref(true)
+const pagination = ref(null)
 
-onMounted(async () => {
-    
-    let result = await blogStore.getBlogs();
+const retrieveBlogs = async (page_number) => {
+    let result = await blogStore.getBlogs(page_number);
     loading.value = false
     blogs.value = result.data
-    
+    pagination.value = result.meta
+}
+onMounted(async () => {
+    retrieveBlogs(1)
+    // let page;
+    // let result = await blogStore.getBlogs(page=1);
+    // loading.value = false
+    // blogs.value = result.data
+    // pagination.value = result.links
 }) 
 </script>
 
@@ -75,6 +83,24 @@ onMounted(async () => {
                 </div>
 
                 </div>
+            </div>
+
+            <div class="flex gap-2">
+                <button 
+                    @click="retrieveBlogs(pagination.current_page - 1)"
+                    :disabled="pagination.current_page == 1"
+                    class="btn btn-neutral"
+                >
+                    Prev
+                </button>
+                <button 
+                    @click="retrieveBlogs(pagination.current_page + 1)"
+                    :disabled="pagination.current_page == pagination.last_page"
+                    class="btn btn-neutral"
+                >
+                    Next
+                </button>
+                
             </div>
         </div>
         <div v-else>
